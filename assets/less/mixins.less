@@ -1,0 +1,27 @@
+.transition (@property:all,@time:0.3s,@timing-function:ease){
+	-webkit-transition: @property @time @timing-function;
+	-moz-transition: @property @time @timing-function;
+	-ms-transition: @property @time @timing-function;
+	transition: @property @time @timing-function;
+}
+
+.border-radius(@topLeft,@topLight,@bottomLight,@bottomLeft){
+	-webkit-border-radius: @topLeft @topLight @bottomLight @bottomLeft;
+	-moz-border-radius: @topLeft @topLight @bottomLight @bottomLeft;
+	-ms-border-radius: @topLeft @topLight @bottomLight @bottomLeft;
+	border-radius: @topLeft @topLight @bottomLight @bottomLeft;
+}
+
+.border-radius(@radius){
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.user-select-none(){
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

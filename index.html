@@ -1,0 +1,4889 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>چت آنلاین</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicons/safari-pinned-tab.svg"
+      color="#00aba9"
+    />
+    <link rel="shortcut icon" href="assets/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta
+      name="msapplication-config"
+      content="assets/favicons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v1.1.3" />
+  </head>
+  <body>
+    <!-- BEGIN:: header of chatroom -->
+    <div class="header">
+      <!-- BEGIN:: header sidebar | logo -->
+      <div class="header-sidebar">
+        <a href="javascript:void(0);" class="banner">
+          <img src="assets/images/chat-logo.png" alt="" />
+          <i class="fa fa-chat"></i>
+          <h1>سایت چت آنلاین</h1>
+        </a>
+      </div>
+      <!-- END:: header sidebar | logo -->
+
+      <!-- BEGIN:: header profile section -->
+      <div class="header-profile-wrapper">
+        <!-- BEGIN:: small devices banner -->
+        <div class="header-logo-small">
+          <!--<a href="javascript:void(0)" class="banner">
+				<img src="assets/images/chat-logo.png" alt="">
+				<i class="fa fa-chat"></i>
+				<h1>سایت چت آنلاین</h1>
+			</a>-->
+          <a href="javascript:showSidebar();" class="menu-toggler rounded">
+            <i class="fa fa-arrow-right"></i>
+          </a>
+          <a href="javascript:toggleLeftMenu();" class="menu-toggler rounded">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+        <!-- END:: small devices banner -->
+
+        <!-- BEGIN:: header links -->
+        <div class="header-links">
+          <!--<a href="javascript:toggleLeftMenu();" class="menu-toggler">
+				<i class="fa fa-bars"></i>
+			</a>-->
+          <ul>
+            <li>
+              <a
+                href="javascript:showLeftPanel('profile');showProfile('user0');;"
+              >
+                پروفایل
+              </a>
+            </li>
+            <li>
+              <a href="javascript:showLeftPanel('friends');"> دوستان </a>
+            </li>
+            <li>
+              <a href="javascript:showLeftPanel('favorites');"> علاقمندی ها </a>
+            </li>
+            <li>
+              <a href="javascript:showLeftPanel('archives');"> آرشیو </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END:: header links -->
+
+        <!-- BEGIN:: header profile -->
+        <div class="header-profile">
+          <div class="dropdown">
+            <a
+              href="#"
+              data-toggle="dropdown"
+              class="d-flex align-items-center"
+            >
+              <!-- BEGIN:: profile name -->
+              <div class="profile-name">
+                <span> اشکان رضایی تیره شبانکاره </span>
+              </div>
+              <!-- END:: profile name -->
+
+              <!-- BEGIN:: profile picture -->
+              <div class="avatar">
+                <img
+                  src="assets/images/ashkan-rezaei.png"
+                  alt=""
+                  class="rounded"
+                />
+              </div>
+              <!-- END:: profile picture -->
+            </a>
+
+            <div class="dropdown-menu">
+              <a
+                href="javascript:showLeftPanel('profile');showProfile('user0');"
+                class="dropdown-item"
+                >پروفایل</a
+              >
+              <a
+                href="javascript:void(0);"
+                class="dropdown-item"
+                data-toggle="modal"
+                data-target="settings"
+                >تنظیمات</a
+              >
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger">خروج</a>
+            </div>
+          </div>
+        </div>
+        <!-- END:: header profile -->
+      </div>
+      <!-- END:: header profile section -->
+    </div>
+    <!-- END:: header of chatroom -->
+
+    <!-- BEGIN:: chat list and chat content -->
+    <div class="content">
+      <!-- TODO: Add Online and Busy Status -->
+      <!-- BEGIN:: Sidebar -->
+      <div class="sidebar show">
+        <!-- BEGIN:: sidebar header -->
+        <div class="sidebar-header">
+          <!-- BEGIN:: title -->
+          <div class="sidebar-title">
+            <h2>چت ها</h2>
+          </div>
+          <!-- END:: title -->
+
+          <!-- BEGIN:: search box -->
+          <div class="sidebar-search">
+            <label for="search" class="d-none">جستجو</label>
+            <input
+              type="search"
+              id="search"
+              name="search"
+              class="search"
+              placeholder="جستجو"
+            />
+          </div>
+          <!-- END:: search box -->
+        </div>
+        <!-- END:: sidebar header -->
+
+        <!-- BEGIN:: sidebar chats list -->
+        <div class="sidebar-body">
+          <!-- BEGIN:: chat list -->
+          <ul class="chat-list disable-scrollbars">
+            <li class="chat-preview-box" onclick="openChat(this,'chat-1')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar3.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">روشنک رمضانی</div>
+                <div class="chat-brief">
+                  <div class="message-delivery delivered seen">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  باشه اینو من چک میکنم.
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">12:25 ب.ظ</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user1');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-2')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar1.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">نسیم رضایی</div>
+                <div class="chat-brief">
+                  سلام. چطوری؟ میخواستم ببینم در چه حالی و چیکار میکنی؟ این پیام
+                  قراره سه نقطه بخوره توی سایدبار! تعجب نکن از ای دیدن این متن
+                  خب!
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="counter rounded">5</div>
+                <div class="last-pm-time online-profile">12:23 ب.ظ</div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-3')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar2.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">اشکان اکبرپور</div>
+                <div class="chat-brief">
+                  <i class="fa fa-camera"></i>
+                  تصویر
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="counter rounded">2</div>
+                <div class="last-pm-time online-profile">07:12 ق.ظ</div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-4')">
+              <div class="box-avatar">
+                <span class="rounded avatar-without-img avatar-group bg-aqua">
+                  <i class="fa fa-users"></i>
+                </span>
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">خانواده ما</div>
+                <div class="chat-brief">
+                  ای بخوره تو سرشون با این خدماتی که میدن کثافطا!
+                  <img
+                    class="emoticon"
+                    src="assets/images/emoticons/pouting-face_1f621.png"
+                    alt=""
+                  />
+                  <img
+                    class="emoticon"
+                    src="assets/images/emoticons/face-with-symbols-on-mouth_1f92c.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">چهارشنبه</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <!--									<a href="javascript:showLeftPanel('profile');" class="dropdown-item">پروفایل</a>-->
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-5')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar8.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">الناز سالاروند</div>
+                <div class="chat-brief">
+                  <div class="message-delivery">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  الی امروز میام کدتو چک میکنم ببینم چند چندیم. :)
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">17 مهر</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user2');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-6')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar5.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">مینا شیرازی</div>
+                <div class="chat-brief">
+                  <i class="fa fa-video"></i>
+                  ویدیو
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">12 مهر</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user3');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-7')">
+              <div class="box-avatar">
+                <span class="rounded avatar-without-img bg-yellow"> م </span>
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">محمد بطشی</div>
+                <div class="chat-brief">
+                  <div class="message-delivery not-delivered">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  باشه محمد، منم هستم. گروه میزنیم حرف میزنیم با هم ببینیم این
+                  کارو باید چیکار کنیم!
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">1 مهر</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user4');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-8')">
+              <div class="box-avatar">
+                <img src="assets/images/avatar7.png" alt="" class="rounded" />
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">ستاره طهماسبی</div>
+                <div class="chat-brief">
+                  <strong>خدافظ اشکی.</strong>
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">99/06/10</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user5');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="chat-preview-box" onclick="openChat(this,'chat-9')">
+              <div class="box-avatar">
+                <span class="rounded avatar-without-img bg-green"> م </span>
+                <span class="online active"></span>
+                <span class="busy"></span>
+              </div>
+              <div class="brief">
+                <div class="profile-name online-profile">مجتبی صائب</div>
+                <div class="chat-brief">
+                  <i class="fa fa-file-archive"></i>
+                  فایل
+                </div>
+              </div>
+              <div class="chat-info-wrapper">
+                <div class="last-pm-time">99/06/01</div>
+                <div class="chat-info-menu">
+                  <div class="dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-left">
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >باز کردن</a
+                      >
+                      <a
+                        href="javascript:showLeftPanel('profile');showProfile('user6');"
+                        class="dropdown-item"
+                        >پروفایل</a
+                      >
+                      <a href="javascript:void(0);" class="dropdown-item"
+                        >آرشیو چت</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item text-danger"
+                        >حذف چت</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- END:: chat list -->
+        </div>
+        <!-- END:: sidebar chats list -->
+
+        <!-- BEGIN:: sidebar footer -->
+        <div class="sidebar-footer">
+          <div class="new-chat-block">
+            <button
+              type="button"
+              onclick="showLeftPanel('newChat')"
+              class="btn btn-block btn-primary"
+            >
+              چت جدید
+            </button>
+          </div>
+        </div>
+        <!-- END:: sidebar footer -->
+      </div>
+      <!-- END:: Sidebar -->
+
+      <!-- BEGIN:: chat content -->
+      <div class="chat-container">
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars active-chat" id="empty-chat">
+          <!-- BEGIN:: Message Divider -->
+          <div class="empty-chat-message">
+            برای شروع چت، یک مخاطب را انتخاب کنید.
+          </div>
+          <!-- END:: Message Divider -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-1">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar3.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar3.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar3.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                به به!
+                <br />
+                سلام اشکان جان.
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خوبی؟
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                منم خوبم.
+                <br />
+                پایان نامه رو تموم کردم و مشغول کار شدم تو یه شرکت خیالی! :)
+
+                <div class="message-info">
+                  <div class="time">12:25 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                باشه اینو من چک میکنم.
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">12:25 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-2">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar1.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar1.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="5 پیام جدید"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar1.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                سلام اشکی.
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خوبی؟
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                یه پیام برای اینکه تعداد درست بشه میفرستم :)
+
+                <div class="message-info">
+                  <div class="time">12:18 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خب پیامای قبلیمو که جواب ندادی!<img
+                  class="emoticon"
+                  src="assets/images/emoticons/neutral-face_1f610.png"
+                  alt=""
+                />
+                <br />
+                یه پیام دیگه میدم ببینم جوابمو میدی یا نه!
+
+                <div class="message-info">
+                  <div class="time">12:23 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                سلام. چطوری؟ میخواستم ببینم در چه حالی و چیکار میکنی؟ این پیام
+                قراره سه نقطه بخوره توی سایدبار! تعجب نکن از ای دیدن این متن خب!
+
+                <div class="message-info">
+                  <div class="time">12:23 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-3">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar2.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar2.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="3 پیام جدید"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar2.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                سلام اشکان. چطوری؟
+                <br />
+                ببین این عکسو میتونی کاریش کنی برام؟!
+
+                <div class="message-info">
+                  <div class="time">07:10 ق.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                <img src="assets/images/stock.jpg" alt="" />
+
+                <div class="message-info">
+                  <div class="time">07:12 ق.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-4">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar2.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar3.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="3 پیام جدید"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar4.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                به به!
+                <br />
+                سلام اشکان جان.
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خوبی؟
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                ای بخوره تو سرشون با این خدماتی که میدن کثافطا!
+                <img
+                  class="emoticon"
+                  src="assets/images/emoticons/pouting-face_1f621.png"
+                  alt=""
+                />
+                <img
+                  class="emoticon"
+                  src="assets/images/emoticons/face-with-symbols-on-mouth_1f92c.png"
+                  alt=""
+                />
+
+                <div class="message-info">
+                  <div class="time">12:25 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-5">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar8.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar8.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/07/17"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar8.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                به به!
+                <br />
+                سلام اشکان جان.
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خوبی؟
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                منم خوبم.
+                <br />
+                پایان نامه رو تموم کردم و مشغول کار شدم تو یه شرکت خیالی! :)
+
+                <div class="message-info">
+                  <div class="time">12:25 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                الی امروز میام کدتو چک میکنم ببینم چند چندیم. :)
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/07/17 08:10 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-6">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar5.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar5.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="3 پیام جدید"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar5.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <br />
+                خوبی؟
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                برات یه ویدیو مفهومی میفرستم ببین، خیلی جالبه:
+                <img
+                  class="emoticon"
+                  src="assets/images/emoticons/neutral-face_1f610.png"
+                  alt=""
+                />
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                <div class="video">
+                  <video controls="controls">
+                    <source src="assets/videos/video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <div class="message-info">
+                  <div class="time">99/07/12 11:00 ق.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-7">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-yellow"> م </span>
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-yellow"> م </span>
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="امروز"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-yellow"> م </span>
+            </div>
+            <div class="message">
+              <div class="message-body">
+                به به!
+                <br />
+                سلام اشکان جان.
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خوبی؟
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                منم خوبم.
+                <br />
+                پایان نامه رو تموم کردم و مشغول کار شدم تو یه شرکت خیالی! :)
+
+                <div class="message-info">
+                  <div class="time">12:25 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                باشه محمد، منم هستم. گروه میزنیم حرف میزنیم با هم ببینیم این
+                کارو باید چیکار کنیم!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery not-delivered ml-10px">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/07/01 01:35 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-8">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar7.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar7.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/06/31"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/avatar7.png"
+                alt=""
+                class="rounded avatar"
+              />
+            </div>
+            <div class="message">
+              <div class="message-body">
+                خیلی خوب بود. مرسی :)
+
+                <div class="message-info">
+                  <div class="time">12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                گفتم یه تشکر الکی کرده باشم که اینا رو نخوام حذف کنم!
+                <img
+                  src="assets/images/emoticons/woman-shrugging_1f937-200d-2640-fe0f.png"
+                  alt=""
+                  class="emoticon"
+                />
+
+                <div class="message-info">
+                  <div class="time">12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                خدافظ اشکی.
+
+                <div class="message-info">
+                  <div class="time">99/06/10 12:23 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <!-- BEGIN:: Messages -->
+        <div class="messages disable-scrollbars" id="chat-9">
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/05/08"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                سلام. خوبی؟
+                <br />
+                کجایی؟ خیلی وقته ازت خبری نیست!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:23 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-green"> م </span>
+            </div>
+
+            <!-- BEGIN:: Message -->
+            <div class="message">
+              <div class="message-body">
+                سلام.
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                خوبم.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:24 ب.ظ</div>
+                </div>
+              </div>
+              <div class="message-body">
+                تو خوبی؟
+                <br />
+                دارم روی پایان نامه کار میکنم. خیلی سرم شلوغ شده این روزا!
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:26 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+            <!-- END:: Message -->
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                خیلی هم عالی! خب پس هیچی، به کارات برس. موفق باشی :) خدانگهدار
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">99/05/08 12:28 ب.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-green"> م </span>
+            </div>
+            <div class="message">
+              <div class="message-body">
+                قربونت.
+                <br />
+                فعلا.
+
+                <div class="message-info">
+                  <div class="time">99/05/08 12:45 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+
+          <!-- BEGIN:: Message Divider -->
+          <div class="message-divider" data-title="99/06/01"></div>
+          <!-- END:: Message Divider -->
+
+          <!-- BEGIN:: Outgoing Message -->
+          <div class="message-wrapper out-message">
+            <div class="message-avatar">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+            </div>
+
+            <!-- BEGIN::Message section -->
+            <div class="message">
+              <!-- BEGIN:: Message Body -->
+              <div class="message-body">
+                بعد از مدت ها دوباره سلام.
+                <br />
+                در چه حالی دوست خوب من؟!
+
+                <!-- BEGIN:: Message info -->
+                <div class="message-info">
+                  <div class="message-delivery delivered seen ml-10px">
+                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="time">08:18 ق.ظ</div>
+                </div>
+                <!-- END:: Message info -->
+              </div>
+              <!-- END:: Message Body -->
+            </div>
+            <!-- END::Message section -->
+          </div>
+          <!-- END:: Outgoing Message -->
+
+          <!-- BEGIN:: Incoming Message -->
+          <div class="message-wrapper in-message">
+            <div class="message-avatar">
+              <span class="rounded avatar-without-img bg-green"> م </span>
+            </div>
+            <div class="message">
+              <div class="message-body">
+                سلام اشکان.
+                <br />
+                آقا چطوری؟
+                <img
+                  src="assets/images/emoticons/thinking-face_1f914.png"
+                  alt=""
+                  class="emoticon"
+                />
+
+                <div class="message-info">
+                  <div class="time">99/06/01 12:15 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                بیا! اینم فایلی که قرار شد برات بفرستم:
+
+                <div class="message-info">
+                  <div class="time">99/06/01 12:17 ب.ظ</div>
+                </div>
+              </div>
+
+              <div class="message-body">
+                <div class="message-file">
+                  <i class="fa fa-file-archive"></i>
+                  <a href="javascript:void(0)" class="download-file"
+                    >Download</a
+                  >
+                </div>
+
+                <div class="message-info">
+                  <div class="time">99/06/01 12:25 ب.ظ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END:: Incoming Message -->
+        </div>
+        <!-- END:: Messages -->
+
+        <div class="chat-footer">
+          <div class="message-sending-box">
+            <button class="send" type="button" onclick="sendMessage();">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+            <button class="send-voice">
+              <i class="fa fa-microphone"></i>
+            </button>
+            <label for="attach">
+              <i class="fa fa-paperclip"></i>
+            </label>
+
+            <input type="file" id="attach" name="attach" class="d-none" />
+            <label for="editor" class="d-none">پیام خود را اینجا بنویسید</label>
+            <div
+              id="editor"
+              contenteditable="true"
+              class="disable-scrollbars"
+            ></div>
+
+            <button type="button" class="emojis" onclick="toggleEmojisBox()">
+              <i class="far fa-smile"></i>
+            </button>
+
+            <div class="emojis-box">
+              <div class="emojis-header">
+                <span>شکلک ها</span>
+              </div>
+
+              <div class="emojis-body">
+                <div class="emojis-wrapper disable-scrollbars">
+                  <div class="emojis-pack" id="recentEmojis">
+                    <ul>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('hatching-chick_1f423.png');"
+                          ><img
+                            src="assets/images/emoticons/hatching-chick_1f423.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a href="javascript:addEmoticonToText('ram_1f40f.png');"
+                          ><img
+                            src="assets/images/emoticons/ram_1f40f.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('man-raising-hand_1f64b-200d-2642-fe0f.png');"
+                          ><img
+                            src="assets/images/emoticons/man-raising-hand_1f64b-200d-2642-fe0f.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('flushed-face_1f633.png');"
+                          ><img
+                            src="assets/images/emoticons/flushed-face_1f633.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('ghost_1f47b.png');"
+                          ><img
+                            src="assets/images/emoticons/ghost_1f47b.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('face-blowing-a-kiss_1f618.png');"
+                          ><img
+                            src="assets/images/emoticons/face-blowing-a-kiss_1f618.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('smiling-face-with-heart-eyes_1f60d.png');"
+                          ><img
+                            src="assets/images/emoticons/smiling-face-with-heart-eyes_1f60d.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('face-savoring-food_1f60b.png');"
+                          ><img
+                            src="assets/images/emoticons/face-savoring-food_1f60b.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('cowboy-hat-face_1f920.png');"
+                          ><img
+                            src="assets/images/emoticons/cowboy-hat-face_1f920.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('partying-face_1f973.png');"
+                          ><img
+                            src="assets/images/emoticons/partying-face_1f973.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('pleading-face_1f97a.png');"
+                          ><img
+                            src="assets/images/emoticons/pleading-face_1f97a.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('thinking-face_1f914.png');"
+                          ><img
+                            src="assets/images/emoticons/thinking-face_1f914.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('zany-face_1f92a.png');"
+                          ><img
+                            src="assets/images/emoticons/zany-face_1f92a.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('woozy-face_1f974.png');"
+                          ><img
+                            src="assets/images/emoticons/woozy-face_1f974.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('winking-face-with-tongue_1f61c.png');"
+                          ><img
+                            src="assets/images/emoticons/winking-face-with-tongue_1f61c.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('upside-down-face_1f643.png');"
+                          ><img
+                            src="assets/images/emoticons/upside-down-face_1f643.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('neutral-face_1f610.png');"
+                          ><img
+                            src="assets/images/emoticons/neutral-face_1f610.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('hugging-face_1f917.png');"
+                          ><img
+                            src="assets/images/emoticons/hugging-face_1f917.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('face-with-monocle_1f9d0.png');"
+                          ><img
+                            src="assets/images/emoticons/face-with-monocle_1f9d0.png"
+                            alt=""
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="javascript:addEmoticonToText('face-with-tongue_1f61b.png');"
+                          ><img
+                            src="assets/images/emoticons/face-with-tongue_1f61b.png"
+                            alt=""
+                        /></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="emojis-pack" id="smileys">
+                    <h5>مردم</h5>
+                  </div>
+                  <div class="emojis-pack" id="nature">
+                    <h5>طبیعت</h5>
+                  </div>
+                  <div class="emojis-pack" id="foodsDrinks">
+                    <h5>غذا و میوه ها</h5>
+                  </div>
+                  <div class="emojis-pack" id="activity">
+                    <h5>فعالیت ها</h5>
+                  </div>
+                  <div class="emojis-pack" id="travelPlaces">
+                    <h5>مسافرت و مکان ها</h5>
+                  </div>
+                  <div class="emojis-pack" id="objects">
+                    <h5>اشیاء</h5>
+                  </div>
+                  <div class="emojis-pack" id="symbolsFlags">
+                    <h5>سمبل ها و پرچم ها</h5>
+                  </div>
+                </div>
+
+                <div class="emojis-footer">
+                  <ul class="emojis-button-wrapper">
+                    <li class="active">
+                      <a href="#recentEmojis">
+                        <i class="far fa-clock"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#smileys">
+                        <i class="far fa-smile"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#nature">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fal"
+                          data-icon="sheep"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 640 512"
+                          class="svg-inline--fa fa-sheep fa-w-20 fa-3x"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M496 96c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm117.31 11.61L576 89.27V80c0-26.47-21.53-48-48-48h-50.75C470.66 13.38 452.88 0 432 0c-26.47 0-48 21.53-48 48v53.01c-1.24-.36-2.38-.97-3.66-1.25-14.03-3.38-28.38-1.34-40.94 5.41-9.03-5.7-19.72-8.89-31.53-9.17-10.78 0-20.94 2.78-29.91 8.12-18-10.59-41.62-10.58-59.56-.05-18.31-10.89-43.09-10.45-61.16 1-12.28-6.66-26.56-8.7-40.88-5.67-17.03 3.84-31.41 14.97-39.62 30.16-16.94.88-33.06 9.11-44.12 23.12-10.81 13.95-15.06 31.86-12.12 48.95C7.62 213.09 0 229.81 0 247.69c0 17.91 7.5 34.59 20.19 46-3.06 17.3 1.25 35.27 12.12 48.98 10.78 14.02 26.78 22.3 43.78 23.16 4.83 9.1 11.99 16.48 20.41 21.98.14 3.96.33 7.93 1.26 11.81l21.12 87.86C122.34 501.86 135.21 512 150 512h57.53c20.95 0 36.12-19.76 31.02-39.86l-20.29-80.07a57.854 57.854 0 0 0 29.3 7.93c10.62 0 20.88-2.84 29.91-8.17 9.16 5.31 20.62 8.56 31.84 8.02 3.67-.12 7.17-1 10.69-1.77V480c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32V356.83c5.69-3.63 11.01-7.98 15.38-13.51 10.81-13.95 15.06-31.86 12.12-48.95 12.88-11.45 20.5-28.17 20.5-46.05 0-8.54-1.81-16.77-4.97-24.31h92.63c14.91 0 28.81-8.03 36.28-21.02 17.97-31.55 20.06-45.08 20.06-52.52 0-18.35-10.22-34.77-26.69-42.86zM150 480l-19.82-82.44c9.14-.19 18.15-2.34 26.38-6.72 9.03 5.79 19.79 8.77 30.64 8.92L207.53 480H150zm266 0h-64v-84.09c8.85 2.29 18.22 2.72 27.62.68 15.13-3.41 27.89-12.78 36.38-25.42V480zm33.34-206.05l-12.22 6.84 5.16 13.02c8.51 21.38-9.05 44.04-30.59 40.3l-14.16-2.52-4.03 13.78c-5.48 18.83-28.59 28.04-44.84 13.67l-11.44-10.14-10.66 10.95c-8.68 8.94-25.64 12.3-38.12.45l-11.06-10.53-11.03 10.58c-10.31 9.92-27.25 9.91-37.16.16l-11.06-10.92-11.22 10.77c-10.59 10.09-28.12 9.72-38-.47l-10.44-10.83-11.44 9.77c-17.43 14.83-39.91 4.28-45.06-13.95L98 330.92l-14.25 2.56c-21.2 3.8-38.89-18.69-30.34-40.3l5.16-13.02-12.22-6.84c-18.61-10.44-19.64-40.06.31-51.28l12.22-6.84-5.16-13.02c-8.56-21.51 9.19-44.04 30.59-40.3l14.16 2.52 4.03-13.78c5.54-19.02 28.75-27.9 44.84-13.67l11.44 10.14 10.66-10.95c9.91-10.23 27.62-10.58 37.56-.69l11.09 10.97 11.25-10.77c10.28-9.88 27.25-9.89 37.66.02l11.06 10.56 11.06-10.59c10.49-10.05 27.6-10.21 37.97.48l10.44 10.8 11.44-9.75c17.4-14.87 39.91-4.26 45.06 13.95l3.97 13.95 14.25-2.56c21.24-3.85 38.87 18.75 30.34 40.3l-5.16 13.02 12.22 6.84c18.62 10.44 19.64 40.07-.31 51.28zm142.82-86.87c-1.75 3.08-4.94 4.92-8.5 4.92H476.55c.14-13.93-4.14-27.67-12.86-38.67-10.78-14.02-26.78-22.3-43.78-23.16-1.1-2.08-2.59-3.87-3.91-5.79V48c0-8.83 7.19-16 16-16s16 7.17 16 16v16h80c8.81 0 16 7.17 16 16v29.17l55.19 27.16c5.44 2.67 8.81 8.09 8.81 14.14 0 3.28-3.34 14.7-15.84 36.61z"
+                            class=""
+                          ></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#foodsDrinks">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="far"
+                          data-icon="apple-alt"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                          class="svg-inline--fa fa-apple-alt"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M415.22 177.62c-18.53-26.47-43.99-43.17-73.58-48.28h-.03c-34.49-5.98-86.14 9.16-117.6 23.77-31.46-14.61-82.95-29.77-117.64-23.77-29.59 5.11-55.05 21.81-73.58 48.28C4.85 217.5-6.55 280.12 3.73 337.17 18.97 421.69 69.96 512 167.23 512c13.44 0 27.62-4.03 42.21-11.97 9-4.88 20.12-4.88 29.12 0 14.59 7.94 28.78 11.97 42.21 11.97 97.26 0 148.25-90.31 163.5-174.84 10.28-57.04-1.12-119.66-29.05-159.54zm-18.19 151.02C392.97 351.25 368.19 464 280.77 464c-5.25 0-11.9-2.12-19.28-6.12-11.56-6.3-24.53-9.45-37.49-9.45s-25.93 3.16-37.49 9.45c-7.37 4-14.03 6.12-19.28 6.12-87.42 0-112.2-112.75-116.26-135.34-8-44.39.5-94.03 21.12-123.5 11.19-15.98 25.46-25.58 42.43-28.5 12.55-2.16 53.83-.07 109.48 30.75 55.68-30.84 97-32.94 109.48-30.75 16.97 2.92 31.24 12.52 42.43 28.5 20.62 29.46 29.12 79.11 21.12 123.48zM222.41 112c18.66 0 52.09-3.26 73.2-24.38C326.17 57.06 319.32.65 319.32.65S313.93 0 305.57 0c-18.66 0-52.09 3.27-73.19 24.38-30.56 30.57-23.71 86.97-23.71 86.97s5.39.65 13.74.65z"
+                            class=""
+                          ></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#activity">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fal"
+                          data-icon="futbol"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 496 512"
+                          class="svg-inline--fa fa-futbol fa-w-16 fa-3x"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M483.7 179.4C449.7 74.6 352.5 8 248.1 8 81.2 8-40 171.4 12.3 332.6 46.3 437.4 143.7 504 248 504c166.9 0 288-163.4 235.7-324.6zm-43 173.7l-94.3 11.6-17.8-24.9 33.7-104.1 28.9-9 69.6 65c-3.6 21.1-10.3 41.8-20.1 61.4zM35.6 291.5l69.4-64.9 28.9 9 33.9 103.7-18.1 25.2-94.2-11.6c-13-26-17.2-45.2-19.9-61.4zm196.5-180.7v32.9L146.2 206l-31.5-9.8-18-93.9c15.3-15.1 32.8-27.8 52-37.8l83.4 46.3zm149.4 85.4L350 206l-85.9-62.3v-32.9l83.6-46.4c19.1 10 36.7 22.7 52 37.9l-18.2 93.9zm-215.4 35l82-59.5 82.1 59.6-31.1 96H197.5l-31.4-96.1zm297.7 19.5L412.7 203l13.3-68.3c34.5 50.8 37.3 97.2 37.8 116zM309.2 49.2l-61.1 33.9-61-33.8c71.5-21.2 122-.1 122.1-.1zM70.3 134.1L83.5 203l-51.1 47.5c.8-31.8 8.7-63.4 23.6-92.6 4.2-8.3 9.1-16.2 14.3-23.8zm7.5 254l68.7 8.4 29.2 62.7c-38.8-13.8-72.7-38.5-97.9-71.1zm137.9 81.3l-40.1-86 17.4-24.2h110.2l17.3 24.2-40.1 86c-22.7 3.5-42.4 3.4-64.7 0zm104.8-10.2l29.2-62.7 69-8.5c-25 32.6-58.8 57.1-98.2 71.2z"
+                            class=""
+                          ></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#travelPlaces">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fal"
+                          data-icon="car-alt"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 480 512"
+                          class="svg-inline--fa fa-car-alt fa-w-15 fa-3x"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M423.18 195.81l-24.94-76.58C387.51 86.29 356.81 64 322.17 64H157.83c-34.64 0-65.34 22.29-76.07 55.22L56.82 195.8C24.02 205.79 0 235.92 0 271.99V400c0 26.47 21.53 48 48 48h16c26.47 0 48-21.53 48-48v-16h256v16c0 26.47 21.53 48 48 48h16c26.47 0 48-21.53 48-48V271.99c0-36.07-24.02-66.2-56.82-76.18zm-310.99-66.67c6.46-19.82 24.8-33.14 45.64-33.14h164.34c20.84 0 39.18 13.32 45.64 33.13l20.47 62.85H91.72l20.47-62.84zM80 400c0 8.83-7.19 16-16 16H48c-8.81 0-16-7.17-16-16v-16h48v16zm368 0c0 8.83-7.19 16-16 16h-16c-8.81 0-16-7.17-16-16v-16h48v16zm0-80.01v32H32v-80c0-26.47 21.53-48 48-48h320c26.47 0 48 21.53 48 48v48zM104.8 248C78.84 248 60 264.8 60 287.95c0 23.15 18.84 39.95 44.8 39.95l10.14.1c39.21 0 45.06-20.1 45.06-32.08 0-24.68-31.1-47.92-55.2-47.92zm10.14 56c-3.51 0-7.02-.1-10.14-.1-12.48 0-20.8-6.38-20.8-15.95S92.32 272 104.8 272s31.2 14.36 31.2 23.93c0 7.17-10.53 8.07-21.06 8.07zm260.26-56c-24.1 0-55.2 23.24-55.2 47.93 0 11.98 5.85 32.08 45.06 32.08l10.14-.1c25.96 0 44.8-16.8 44.8-39.95 0-23.16-18.84-39.96-44.8-39.96zm0 55.9c-3.12 0-6.63.1-10.14.1-10.53 0-21.06-.9-21.06-8.07 0-9.57 18.72-23.93 31.2-23.93s20.8 6.38 20.8 15.95-8.32 15.95-20.8 15.95z"
+                            class=""
+                          ></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#objects">
+                        <i class="far fa-lightbulb"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#symbolsFlags">
+                        <i class="far fa-heart"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END:: chat content -->
+
+      <!-- BEGIN:: left side panel -->
+      <div class="left-panel-wrapper disable-scrollbars">
+        <!-- BEGIN:: profile panel -->
+        <div class="left-panel" id="profile">
+          <div class="panel-header">
+            <h2 class="panel-title">پروفایل</h2>
+            <div class="panel-header-options">
+              <button
+                type="button"
+                data-toggle="modal"
+                data-target="edit-profile"
+              >
+                <i class="fa fa-pencil-alt"></i>
+              </button>
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-profile">
+              <img
+                src="assets/images/ashkan-rezaei.png"
+                alt=""
+                class="rounded"
+              />
+
+              <h3 class="panel-profile-name">اشکان رضایی</h3>
+              <div class="panel-profile-last-visit">
+                آخرین بازدید:
+                <span> شنبه 23 اسفند 1399</span>
+              </div>
+            </div>
+
+            <div class="tab-list text-center">
+              <a href="#about-tab" class="tab-item active"> درباره </a>
+              <a href="#multimedia-tab" class="tab-item"> چند رسانه ای </a>
+            </div>
+
+            <div class="tab-contents">
+              <div class="tab-content" id="about-tab">
+                <p class="profile-description">
+                  این اکانت متعلق است به این چهره که بالا دیده میشود! ایشان
+                  متولد شهرستان
+                  <b>فیروزآباد</b>
+                  بوده و در حال حاضر ساکن شیراز میباشند. خب بیایم تو فضای
+                  خودمونی تر! طراح و برنامه نویس وب هستم. موسیقی رو دوس دارم،
+                  مخصوصا اونا که باعث میشن به فکر فرو برم و یه حرکتی بزنم! از
+                  گیتار خوشم میاد و در سطح مقدماتی هم میزدمش، اما گذاشتمش کنار.
+                  از فیلم هایی که باعث بشن به فکر فرو برم خوشم میاد.
+                  <b>
+                    راستی اگه پیشنهادی داشتین (چه کاری، چه فیلمی و چه
+                    موسیقیایی)، میتونین به اکانت
+                    <a href="https://t.me/ashkan_rezaei_tsh" target="_blank"
+                      >تلگرامم</a
+                    >
+                    پیام بدین :)
+                  </b>
+                </p>
+                <div class="option-wrapper" id="phone">
+                  <label>شماره:</label>
+                  <h3
+                    class="ltr cursor-pointer"
+                    title="برای کپی کردن کلیک کنید!"
+                    onclick="copyText(this)"
+                  >
+                    +989379069256
+                  </h3>
+                </div>
+                <div class="option-wrapper" id="city">
+                  <label>شهر</label>
+                  <h3>ایران / شیراز</h3>
+                </div>
+                <!--<div class="option-wrapper" id="website">
+							<label>وبسایت</label>
+							<h3 class="ltr">
+								<a href="https://ashkanrezaei.ir/" target="_blank">
+									https://ashkanrezaei.ir/
+								</a>
+							</h3>
+						</div>-->
+
+                <!--<div class="option-wrapper" id="profile-social-media">
+							<label>شبکه های اجتماعی</label>
+							<a href="javascript:void(0);" target="_blank" class="social-media telegram">
+								<i class="fab fa-telegram-plane"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media whatsapp">
+								<i class="fab fa-whatsapp"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media linkedin">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media google">
+								<i class="fab fa-google"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media facebook">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media twitter">
+								<i class="fab fa-twitter"></i>
+							</a>
+							<a href="javascript:void(0);" target="_blank" class="social-media instagram">
+								<i class="fab fa-instagram"></i>
+							</a>
+						</div>-->
+
+                <div class="option-wrapper" id="profile-settings">
+                  <label>تنظیمات</label>
+                  <div class="my-10px">
+                    <label class="switch">
+                      <input type="checkbox" id="block" />
+                      <span class="switch-slider"></span>
+                      <span class="switch-text">بلاک</span>
+                    </label>
+                  </div>
+                  <div class="my-10px">
+                    <label class="switch">
+                      <input type="checkbox" checked id="get-notifications" />
+                      <span class="switch-slider"></span>
+                      <span class="switch-text">دریافت نوتیفیکیشن ها</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-content" id="multimedia-tab">
+                <div class="d-flex justify-content-between">
+                  <h3 class="d-inline-flex">فایل های اخیر</h3>
+                  <label for="file-upload" class="cursor-pointer text-primary">
+                    <input type="file" id="file-upload" class="d-none" />
+                    <i class="fa fa-upload ml-10px"></i> آپلود
+                  </label>
+                </div>
+
+                <!--<ul class="recent-files">
+							<li>
+								<a href="javascript:void(0)" class="recent-item">
+									<i class="fa fa-file-pdf text-danger"></i>
+									report.pdf
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" class="recent-item">
+									<i class="fa fa-image text-muted"></i>
+									profile_image.png
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" class="recent-item">
+									<i class="fa fa-file-excel text-green"></i>
+									excel_file.xlsx
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" class="recent-item">
+									<i class="fa fa-file-alt text-orange"></i>
+									text.txt
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" class="recent-item">
+									<i class="fa fa-file-word text-blue"></i>
+									document.docx
+								</a>
+							</li>
+						</ul>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END:: profile panel -->
+
+        <!-- BEGIN:: friends panel -->
+        <div class="left-panel" id="friends">
+          <div class="panel-header">
+            <h2 class="panel-title">دوستان</h2>
+            <div class="panel-header-options">
+              <button
+                type="button"
+                data-toggle="modal"
+                data-target="add-friend"
+              >
+                <i class="fa fa-user-plus"></i>
+              </button>
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-search-wrapper">
+              <label for="friends-search" class="sr-only">جستجو</label>
+              <input
+                type="search"
+                id="friends-search"
+                class="panel-search"
+                placeholder="جستجو..."
+              />
+            </div>
+
+            <div class="my-10px">
+              <label>123 دوست</label>
+            </div>
+
+            <div class="users-wrapper">
+              <ul class="users-list disable-scrollbars">
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar1.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>نسیم محمدی</h3>
+                    <span>دامپزشک</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar2.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>محمد احمدی</h3>
+                    <span>برنامه نویس</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar3.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>ندا خردادی</h3>
+                    <span>روانشناس</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar4.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>پوریا پرورش</h3>
+                    <span>وب دولوپر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar5.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>آیما رضایی</h3>
+                    <span>آرایشگر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar7.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>نسیم اکبرپور</h3>
+                    <span>مربی ورزش</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar8.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>سارا سروی</h3>
+                    <span>لایف استایلر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END:: friends panel -->
+
+        <!-- BEGIN:: favorites panel -->
+        <div class="left-panel" id="favorites">
+          <div class="panel-header">
+            <h2 class="panel-title">علاقه مندی ها</h2>
+            <div class="panel-header-options">
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-search-wrapper">
+              <label for="favorites-search" class="sr-only">جستجو</label>
+              <input
+                type="search"
+                id="favorites-search"
+                class="panel-search"
+                placeholder="جستجو..."
+              />
+            </div>
+
+            <div class="users-wrapper">
+              <ul class="users-list disable-scrollbars">
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>نسیم محمدی</h3>
+                    <span
+                      title="سال نفرین شده در قرن مصیبت یعنی/ هی زمستان برود باز زمستان برسد"
+                      >سال نفرین شده در قرن مصیبت یعنی/ هی زمستان برود باز
+                      زمستان برسد</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>محمد احمدی</h3>
+                    <span title="حسرت یه لحظه دیدن واسه من شده یه عادت"
+                      >حسرت یه لحظه دیدن واسه من شده یه عادت</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>ندا خردادی</h3>
+                    <span title="خنده کن بی پروا ... خنده هایت زیباست"
+                      >خنده کن بی پروا ... خنده هایت زیباست</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>پوریا پرورش</h3>
+                    <span
+                      title="منم آن شیخ سیه روز که در آخر عمر / لای موهای تو گم کرد خداوندش را"
+                      >منم آن شیخ سیه روز که در آخر عمر / لای موهای تو گم کرد
+                      خداوندش را</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>آیما رضایی</h3>
+                    <span
+                      title="لبخند تو را چند صباحی‌ست ندیدم / یک بار دگر خانه‌ات آباد بگو سیب"
+                      >لبخند تو را چند صباحی‌ست ندیدم / یک بار دگر خانه‌ات آباد
+                      بگو سیب</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>نسیم اکبرپور</h3>
+                    <span
+                      title="‏دوستت دارم و چقدر توضیح دادنِ حرف‌های ساده سخت است... لیلا کردبچه"
+                    >
+                      ‏دوستت دارم و چقدر توضیح دادنِ حرف‌های ساده سخت است...
+                      لیلا کردبچه
+                    </span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-info">
+                    <h3>سارا سروی</h3>
+                    <span title="همه بر سر زبانند و تو در میان جانی..."
+                      >همه بر سر زبانند و تو در میان جانی...</span
+                    >
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >حذف از علاقه مندی</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END:: favorites panel -->
+
+        <!-- BEGIN:: archives panel -->
+        <div class="left-panel" id="archives">
+          <div class="panel-header">
+            <h2 class="panel-title">آرشیو</h2>
+            <div class="panel-header-options">
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-search-wrapper">
+              <label for="archives-search" class="sr-only">جستجو</label>
+              <input
+                type="search"
+                id="archives-search"
+                class="panel-search"
+                placeholder="جستجو..."
+              />
+            </div>
+
+            <div class="users-wrapper">
+              <ul class="users-list disable-scrollbars">
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <span class="user-without-img rounded bg-aqua"> نم </span>
+                  </div>
+                  <div class="user-info">
+                    <h3>نسیم محمدی</h3>
+                    <span>دامپزشک</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >بازگرداندن</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >حذف</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <span class="user-without-img bg-yellow rounded"> نخ </span>
+                  </div>
+                  <div class="user-info">
+                    <h3>ندا خردادی</h3>
+                    <span>روانشناس</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >بازگرداندن</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >حذف</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <span class="user-without-img rounded bg-green"> پپ </span>
+                  </div>
+                  <div class="user-info">
+                    <h3>پوریا پرورش</h3>
+                    <span>وب دولوپر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >نمایش</a
+                        >
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >بازگرداندن</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >حذف</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END:: archives panel -->
+
+        <!-- BEGIN:: new chat panel -->
+        <div class="left-panel" id="newChat">
+          <div class="panel-header">
+            <h2 class="panel-title">چت جدید</h2>
+            <div class="panel-header-options">
+              <button type="button" data-toggle="modal" data-target="new-group">
+                <i class="fa fa-users"></i>
+              </button>
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-search-wrapper">
+              <label for="new-chat-search" class="sr-only">جستجو</label>
+              <input
+                type="search"
+                id="new-chat-search"
+                class="panel-search"
+                placeholder="جستجو..."
+              />
+            </div>
+
+            <div class="users-wrapper">
+              <ul class="users-list disable-scrollbars">
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar1.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>نسیم محمدی</h3>
+                    <span>دامپزشک</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar2.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>محمد احمدی</h3>
+                    <span>برنامه نویس</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar3.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>ندا خردادی</h3>
+                    <span>روانشناس</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar4.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>پوریا پرورش</h3>
+                    <span>وب دولوپر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar5.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>آیما رضایی</h3>
+                    <span>آرایشگر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar7.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>نسیم اکبرپور</h3>
+                    <span>مربی ورزش</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="user-item">
+                  <div class="user-avatar">
+                    <figure>
+                      <img
+                        src="assets/images/avatar8.png"
+                        alt=""
+                        class="rounded"
+                      />
+                    </figure>
+                  </div>
+                  <div class="user-info">
+                    <h3>سارا سروی</h3>
+                    <span>لایف استایلر</span>
+                  </div>
+                  <div class="user-options">
+                    <div class="dropdown">
+                      <a
+                        href="javascript:void(0);"
+                        data-toggle="dropdown"
+                        class="text-primary"
+                      >
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-left">
+                        <a href="javascript:void(0);" class="dropdown-item"
+                          >چت جدید</a
+                        >
+                        <a
+                          href="javascript:showLeftPanel('profile');"
+                          class="dropdown-item"
+                          >پروفایل</a
+                        >
+                        <div class="dropdown-divider"></div>
+                        <a
+                          href="javascript:void(0);"
+                          class="dropdown-item text-danger"
+                          >بلاک</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END:: new chat panel -->
+
+        <!-- BEGIN:: small devices menu -->
+        <div class="left-panel" id="menu">
+          <div class="panel-header">
+            <!--				<h2 class="panel-title">دوستان</h2>-->
+            <div class="panel-header-options">
+              <button
+                type="button"
+                onclick="closeLeftPanel()"
+                class="close-panel"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <ul class="menus">
+              <li>
+                <a href="javascript:showLeftPanel('profile')"> پروفایل </a>
+              </li>
+              <li>
+                <a href="javascript:showLeftPanel('friends')"> دوستان </a>
+              </li>
+              <li>
+                <a href="javascript:showLeftPanel('favorites')">
+                  علاقمندی ها
+                </a>
+              </li>
+              <li>
+                <a href="javascript:showLeftPanel('archives')"> آرشیو </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END:: small devices menu -->
+      </div>
+      <!-- END:: left side panel -->
+    </div>
+    <!-- END:: chat list and chat content -->
+
+    <div class="modal" id="new-group">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">
+              <i class="fa fa-users vertical-align-middle"></i>
+              گروه جدید
+            </h3>
+            <span class="modal-close" data-dismiss="modal"> &times; </span>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="group-name">نام گروه</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="group-name"
+                  name="group-name"
+                  class="form-control"
+                  placeholder="نام گروه را بنویسید"
+                />
+                <button type="button" class="input-group-append cursor-pointer">
+                  <i class="fa fa-smile"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>اعضای گروه</label>
+              <div class="group-members">
+                <ul class="members">
+                  <li class="member">
+                    <img
+                      src="assets/images/avatar1.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-green"> n </span>
+                  </li>
+                  <li class="member">
+                    <img
+                      src="assets/images/avatar2.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-orange"> a </span>
+                  </li>
+                  <li class="member">
+                    <img
+                      src="assets/images/avatar3.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-aqua"> s </span>
+                  </li>
+                  <li class="member">
+                    <img
+                      src="assets/images/avatar4.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-green"> i </span>
+                  </li>
+                  <li class="member">
+                    <img
+                      src="assets/images/avatar5.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-blue"> m </span>
+                  </li>
+                  <li class="member">
+                    <span class="user-without-image bg-primary cursor-pointer">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="group-description">توضیحات گروه</label>
+              <textarea
+                name="group-description"
+                id="group-description"
+                cols="30"
+                rows="10"
+                class="form-control"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer text-left">
+            <button class="btn btn-primary">ایجاد گروه</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="add-friend">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">
+              <i class="fa fa-user-plus"></i>
+              افزودن دوست جدید
+            </h3>
+            <span class="modal-close" data-dismiss="modal"> &times; </span>
+          </div>
+          <div class="modal-body">
+            <p class="my-10px text-dark-light">
+              با پر کردن فرم زیر، برای دوستانتان دعوتنامه بفرستید.
+            </p>
+
+            <div class="form-group">
+              <label for="invitation-email">ایمیل</label>
+              <input
+                type="email"
+                id="invitation-email"
+                name="invitation-email"
+                class="form-control form-ltr-control"
+                placeholder="example@ashkanrezaei.ir ایمیل را وارد کنید. مثال"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="invitation-message">متن دعوتنامه</label>
+              <textarea
+                name="invitation-message"
+                id="invitation-message"
+                cols="30"
+                rows="10"
+                class="form-control"
+                placeholder="متن پیام را اینجا بنویسید..."
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer text-left">
+            <button class="btn btn-primary">ارسال</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-profile">
+      <!-- BEGIN:: modal dialog -->
+      <div class="modal-dialog">
+        <!-- BEGIN:: modal content -->
+        <div class="modal-content">
+          <!-- BEGIN:: modal header -->
+          <div class="modal-header">
+            <h3 class="modal-title">
+              <i class="fa fa-pencil-alt vertical-align-middle"></i>
+              ویرایش پروفایل
+            </h3>
+            <span class="modal-close" data-dismiss="modal"> &times; </span>
+          </div>
+          <!-- END:: modal header -->
+
+          <!-- BEGIN:: modal body -->
+          <div class="modal-body">
+            <div class="tab-list">
+              <a href="#profile-personal" class="tab-item active">شخصی</a>
+              <a href="#profile-about" class="tab-item">درباره</a>
+              <a href="#profile-social" class="tab-item">شبکه های اجتماعی</a>
+            </div>
+
+            <!-- BEGIN:: tab contents -->
+            <div class="tab-contents">
+              <!-- BEGIN:: profile personal -->
+              <div class="tab-content show" id="profile-personal">
+                <div class="form-group">
+                  <label for="full-name">نام کامل</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      id="full-name"
+                      name="full-name"
+                      class="form-control"
+                      placeholder="نام کامل خود را بنویسید"
+                    />
+                    <div class="input-group-append">
+                      <i class="fa fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <label for="profile-label" class="my-10px d-block"
+                  >آواتار</label
+                >
+
+                <div class="d-flex my-10px">
+                  <div class="personal-profile-avatar ml-10px">
+                    <img
+                      src="assets/images/ashkan-rezaei.png"
+                      alt=""
+                      class="rounded"
+                    />
+                  </div>
+
+                  <div class="form-group flex-grow-1">
+                    <div class="input-group">
+                      <input type="file" class="d-none" id="profile-avatar" />
+                      <label
+                        for="profile-avatar"
+                        id="profile-label"
+                        class="form-control cursor-pointer custom-file-input"
+                        >انتخاب عکس</label
+                      >
+                      <button
+                        class="input-group-append cursor-pointer"
+                        onclick="trigger('#profile-label','click')"
+                        type="button"
+                      >
+                        <i class="fa fa-file-image"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-city">شهر</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      id="profile-city"
+                      class="form-control"
+                      placeholder="مثلا شیراز"
+                    />
+                    <div class="input-group-append">
+                      <i class="fa fa-city"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-phone">شماره</label>
+                  <div class="input-group">
+                    <input
+                      type="tel"
+                      id="profile-phone"
+                      class="form-control form-ltr-control"
+                      placeholder="+98 937 906 9256 مثلا"
+                    />
+                    <div class="input-group-append">
+                      <i class="fa fa-phone-alt"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-website">وبسایت</label>
+                  <input
+                    type="url"
+                    id="profile-website"
+                    class="form-control form-ltr-control"
+                    placeholder="https://ashkanrezaei.ir مثلا"
+                  />
+                </div>
+
+                <div class="text-left">
+                  <button class="btn btn-primary">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: profile personal -->
+
+              <!-- BEGIN:: profile about -->
+              <div class="tab-content" id="profile-about">
+                <div class="form-group">
+                  <label for="profile-about-description"
+                    >چند کلمه (جمله) درباره خودتان بنویسید</label
+                  >
+                  <textarea
+                    name="profile-about-description"
+                    id="profile-about-description"
+                    cols="30"
+                    rows="10"
+                    class="form-control"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="custom-checkbox-container">
+                    نمایش پروفایل
+                    <input type="checkbox" checked />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div class="text-left">
+                  <button class="btn btn-primary" type="button">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: profile about -->
+
+              <!-- BEGIN:: profile social -->
+              <div class="tab-content" id="profile-social">
+                <div class="form-group">
+                  <label for="social-media-telegram" class="d-none"
+                    >نام کاربری تلگرام</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-telegram"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-telegram-plane telegram-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-whatsapp" class="d-none"
+                    >نام کاربری واتس اپ</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-whatsapp"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-whatsapp whatsapp-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-linkedin" class="d-none"
+                    >نام کاربری لینکداین</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-linkedin"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-linkedin-in linkedin-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-google" class="d-none">ایمیل</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-google"
+                      placeholder="ایمیل"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-google google-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-facebook" class="d-none"
+                    >نام کاربری فیسبوک</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-facebook"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-facebook-f facebook-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-twitter" class="d-none"
+                    >نام کاربری توئیتر</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-twitter"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-twitter twitter-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="social-media-instagram" class="d-none"
+                    >نام کاربری اینستاگرام</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control form-ltr-control"
+                      id="social-media-instagram"
+                      placeholder="نام کاربری"
+                    />
+                    <div class="input-group-append">
+                      <i class="fab fa-instagram instagram-text"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-left">
+                  <button type="button" class="btn btn-primary">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: profile social -->
+            </div>
+            <!-- END:: tab contents -->
+          </div>
+          <!-- END:: modal body -->
+        </div>
+        <!-- END:: modal content -->
+      </div>
+      <!-- END:: modal dialog -->
+    </div>
+
+    <div class="modal" id="settings">
+      <!-- BEGIN:: modal dialog -->
+      <div class="modal-dialog">
+        <!-- BEGIN:: modal content -->
+        <div class="modal-content">
+          <!-- BEGIN:: modal header -->
+          <div class="modal-header">
+            <h3 class="modal-title"></h3>
+            <span class="modal-close" data-dismiss="modal"> &times; </span>
+          </div>
+          <!-- END:: modal header -->
+
+          <!-- BEGIN:: modal body -->
+          <div class="modal-body">
+            <!-- BEGIN:: tab list -->
+            <div class="tab-list">
+              <a href="#settings-account" class="tab-item active"
+                >حساب کاربری</a
+              >
+              <a href="#settings-notification" class="tab-item">نوتیفیکیشن</a>
+              <a href="#settings-security" class="tab-item">امنیت</a>
+            </div>
+            <!-- END:: tab list -->
+
+            <!-- BEGIN:: tab contents -->
+            <div class="tab-contents">
+              <!-- BEGIN:: account settings -->
+              <div class="tab-content show" id="settings-account">
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">نمایش مخاطبان گوشی</span>
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">تأیید پیام های ورودی</span>
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">حریم خصوصی پروفایل</span>
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">تنظیمات ویژه توسعه دهندگان</span>
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">تأیید دو مرحله ای ورود</span>
+                  </label>
+                </div>
+
+                <div class="text-left">
+                  <button class="btn btn-primary" type="button">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: account settings -->
+
+              <!-- BEGIN:: notification settings -->
+              <div class="tab-content" id="settings-notification">
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text"
+                      >اجازه نمایش اعلان های موبایل</span
+                    >
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text"
+                      >اعلان پیوستن دوستان به چت آنلاین</span
+                    >
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">ارسال اعلان ها با ایمیل</span>
+                  </label>
+                </div>
+
+                <div class="text-left">
+                  <button class="btn btn-primary" type="button">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: notification settings -->
+
+              <!-- BEGIN:: security settings -->
+              <div class="tab-content" id="settings-security">
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text"
+                      >یادآوری تغییر رمز عبور در هر ماه</span
+                    >
+                  </label>
+                </div>
+
+                <div class="my-10px">
+                  <label class="switch">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider"></span>
+                    <span class="switch-text">اطلاع رسانی ورودهای مشکوک</span>
+                  </label>
+                </div>
+
+                <div class="accordion-wrapper mt-20px">
+                  <button
+                    type="button"
+                    class="btn btn-transparent"
+                    data-toggle="accordion"
+                    data-target="security-questions"
+                  >
+                    <i class="fa fa-plus vertical-align-middle"></i>
+                    سوالات امنیتی
+                  </button>
+                  <div class="accordion" id="security-questions">
+                    <div class="form-group">
+                      <label for="quest-1" class="d-none">سوال یک</label>
+                      <input
+                        type="text"
+                        id="quest-1"
+                        class="form-control"
+                        placeholder="سوال یک"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="quest-2" class="d-none">سوال یک</label>
+                      <input
+                        type="text"
+                        id="quest-2"
+                        class="form-control"
+                        placeholder="سوال دو"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="quest-3" class="d-none">سوال یک</label>
+                      <input
+                        type="text"
+                        id="quest-3"
+                        class="form-control"
+                        placeholder="سوال سه"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="quest-4" class="d-none">سوال یک</label>
+                      <input
+                        type="text"
+                        id="quest-4"
+                        class="form-control"
+                        placeholder="سوال چهار"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="quest-5" class="d-none">سوال یک</label>
+                      <input
+                        type="text"
+                        id="quest-5"
+                        class="form-control"
+                        placeholder="سوال پنج"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-left">
+                  <button class="btn btn-primary" type="button">ذخیره</button>
+                </div>
+              </div>
+              <!-- END:: security settings -->
+            </div>
+            <!-- END:: tab contents -->
+          </div>
+          <!-- END:: modal body -->
+        </div>
+        <!-- END:: modal content -->
+      </div>
+      <!-- END:: modal dialog -->
+    </div>
+
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/profiles.js"></script>
+    <script src="assets/js/emoticons.js"></script>
+    <script src="assets/js/script.js?v1.1.4"></script>
+  </body>
+</html>
