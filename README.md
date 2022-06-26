@@ -1,1 +1,1 @@
-# Demo Chat frontend
+# Chat frontend Demo
